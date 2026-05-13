@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { RotateCcw, Trash2, Globe } from 'lucide-react'
 import { Language, GameMode, LANGUAGE_NAMES, LANGUAGE_FLAGS, translations, TranslationKey } from '@/lib/i18n'
 
-const LANGUAGES: Language[] = ['ru', 'tr', 'en', 'pt', 'id', 'es', 'ms', 'ko']
+const LANGUAGES: Language[] = ['ru', 'tr', 'en', 'pt', 'vi', 'id', 'es', 'ms', 'ko']
 
 interface Prediction {
   id: number
