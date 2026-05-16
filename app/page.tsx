@@ -255,13 +255,13 @@ function RouletteMode({
               
               setPredictions(prev => [...prev, {
                 id: newPredId,
-                color: top.color,
+                color: top.color as 'red' | 'black',
                 position: { col, row: r }
               }])
               
               setPredictionLogs(prev => [...prev, {
                 id: newPredId,
-                predictedColor: top.color,
+                predictedColor: top.color as 'red' | 'black',
                 status: 'pending'
               }])
             }
