@@ -390,7 +390,7 @@ function RouletteMode({
             </div>
             {/* Row 1-9 */}
             <div className="flex gap-1 justify-center">
-              {Array.from({ length: 10 }, (_, i) => i).map(num => (
+              {Array.from({ length: 9 }, (_, i) => i + 1).map(num => (
                 <Button
                   key={num}
                   onClick={() => addSpin(num)}
