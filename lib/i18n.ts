@@ -24,7 +24,7 @@ export const LANGUAGE_FLAGS: Record<Language, string> = {
   ko: '🇰🇷'
 }
 
-export type GameMode = 'baccarat' | 'dragonTiger' | 'football'
+export type GameMode = 'baccarat' | 'dragonTiger' | 'football' | 'roulette'
 
 export type TranslationKey =
   | 'title'
@@ -36,6 +36,7 @@ export type TranslationKey =
   | 'modeBaccarat'
   | 'modeDragonTiger'
   | 'modeFootball'
+  | 'modeRoulette'
   | 'player'
   | 'banker'
   | 'tie'
@@ -44,6 +45,9 @@ export type TranslationKey =
   | 'home'
   | 'away'
   | 'draw'
+  | 'red'
+  | 'black'
+  | 'color'
   | 'statsTitle'
   | 'correct'
   | 'incorrect'
@@ -72,6 +76,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Баккара',
     modeDragonTiger: 'Дракон Тигр',
     modeFootball: 'Футбол',
+    modeRoulette: 'Рулетка',
     player: 'ИГРОК',
     banker: 'БАНКИР',
     tie: 'НИЧЬЯ',
@@ -80,6 +85,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'ДОМ',
     away: 'ГОСТИ',
     draw: 'НИЧЬЯ',
+    red: 'КРАСНОЕ',
+    black: 'ЧЁРНОЕ',
+    color: 'Цвет',
     statsTitle: '📊 Статистика прогнозов',
     correct: 'Верно',
     incorrect: 'Ошибок',
@@ -107,6 +115,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Bakara',
     modeDragonTiger: 'Ejderha Kaplan',
     modeFootball: 'Futbol',
+    modeRoulette: 'Rulet',
     player: 'OYUNCU',
     banker: 'BANKER',
     tie: 'BERABERE',
@@ -115,6 +124,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'EV',
     away: 'DEPLASMAN',
     draw: 'BERABERE',
+    red: 'KIRMIZI',
+    black: 'SİYAH',
+    color: 'Renk',
     statsTitle: '📊 Tahmin İstatistikleri',
     correct: 'Doğru',
     incorrect: 'Hatalı',
@@ -142,6 +154,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Baccarat',
     modeDragonTiger: 'Dragon Tiger',
     modeFootball: 'Football',
+    modeRoulette: 'Roulette',
     player: 'PLAYER',
     banker: 'BANKER',
     tie: 'TIE',
@@ -150,6 +163,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'HOME',
     away: 'AWAY',
     draw: 'DRAW',
+    red: 'RED',
+    black: 'BLACK',
+    color: 'Color',
     statsTitle: '📊 Prediction Statistics',
     correct: 'Correct',
     incorrect: 'Incorrect',
@@ -177,6 +193,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Bacará',
     modeDragonTiger: 'Dragão Tigre',
     modeFootball: 'Futebol',
+    modeRoulette: 'Roleta',
     player: 'JOGADOR',
     banker: 'BANQUEIRO',
     tie: 'EMPATE',
@@ -185,6 +202,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'CASA',
     away: 'FORA',
     draw: 'EMPATE',
+    red: 'VERMELHO',
+    black: 'PRETO',
+    color: 'Cor',
     statsTitle: '📊 Estatísticas de Previsão',
     correct: 'Correto',
     incorrect: 'Incorreto',
@@ -212,6 +232,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Bakarat',
     modeDragonTiger: 'Naga Harimau',
     modeFootball: 'Sepak Bola',
+    modeRoulette: 'Rolet',
     player: 'PEMAIN',
     banker: 'BANKIR',
     tie: 'SERI',
@@ -220,6 +241,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'RUMAH',
     away: 'TANDANG',
     draw: 'SERI',
+    red: 'MERAH',
+    black: 'HITAM',
+    color: 'Warna',
     statsTitle: '📊 Statistik Prediksi',
     correct: 'Benar',
     incorrect: 'Salah',
@@ -247,6 +271,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Baccarat',
     modeDragonTiger: 'Dragón Tigre',
     modeFootball: 'Fútbol',
+    modeRoulette: 'Ruleta',
     player: 'JUGADOR',
     banker: 'BANQUERO',
     tie: 'EMPATE',
@@ -255,6 +280,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'CASA',
     away: 'VISITANTE',
     draw: 'EMPATE',
+    red: 'ROJO',
+    black: 'NEGRO',
+    color: 'Color',
     statsTitle: '📊 Estadísticas de Predicción',
     correct: 'Correcto',
     incorrect: 'Incorrecto',
@@ -282,6 +310,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Baccarat',
     modeDragonTiger: 'Naga Harimau',
     modeFootball: 'Bola Sepak',
+    modeRoulette: 'Rolet',
     player: 'PEMAIN',
     banker: 'BANKIR',
     tie: 'SERI',
@@ -290,6 +319,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'RUMAH',
     away: 'LAWANAN',
     draw: 'SERI',
+    red: 'MERAH',
+    black: 'HITAM',
+    color: 'Warna',
     statsTitle: '📊 Statistik Ramalan',
     correct: 'Betul',
     incorrect: 'Salah',
@@ -317,6 +349,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: '바카라',
     modeDragonTiger: '드래곤 타이거',
     modeFootball: '축구',
+    modeRoulette: '룰렛',
     player: '플레이어',
     banker: '뱅커',
     tie: '타이',
@@ -325,6 +358,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: '홈',
     away: '원정',
     draw: '무승부',
+    red: '빨강',
+    black: '검정',
+    color: '색상',
     statsTitle: '📊 예측 통계',
     correct: '정확',
     incorrect: '오류',
@@ -352,6 +388,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     modeBaccarat: 'Baccarat',
     modeDragonTiger: 'Rồng Hổ',
     modeFootball: 'Bóng đá',
+    modeRoulette: 'Roulette',
     player: 'PLAYER',
     banker: 'BANKER',
     tie: 'TIE',
@@ -360,6 +397,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     home: 'HOME',
     away: 'AWAY',
     draw: 'HÒA',
+    red: 'ĐỎ',
+    black: 'ĐEN',
+    color: 'Màu',
     statsTitle: '📊 Thống kê dự đoán',
     correct: 'Đúng',
     incorrect: 'Sai',
