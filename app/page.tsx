@@ -316,7 +316,7 @@ function RouletteMode({
     // Restore lastColor from remaining spins (find last non-green color)
     const lastNonGreenSpin = [...newSpins].reverse().find(s => s.color !== 'green')
     if (lastNonGreenSpin) {
-      setLastColor(lastNonGreenSpin.color)
+      setLastColor(lastNonGreenSpin.color as 'red' | 'black')
     } else {
       setLastColor('black')
     }
