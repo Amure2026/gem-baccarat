@@ -200,10 +200,18 @@ function RouletteMode({
   }, [spins])
 
   const addSpin = useCallback((num: number) => {
-    const color = getNumberColor(num)
+    // Determine color: 0 takes the color of previous number
+    let color: 'red' | 'black' | 'green'
+    if (num === 0) {
+      // 0 takes the color of previous number (lastColor)
+      color = lastColor
+    } else {
+      color = getNumberColor(num)
+    }
+    
     const newSpin: RouletteSpin = { value: num, color }
     
-    // Update last color for 0 handling
+    // Update last color (always, even for 0 - as in original)
     if (color !== 'green') {
       setLastColor(color)
     }
@@ -215,12 +223,12 @@ function RouletteMode({
     const col = Math.floor(idx / 10)
     const row = idx % 10
     
-    // Check prediction
+    // Check prediction (now 0 can participate with its inherited color)
     const existingPrediction = predictions.find(
       p => p.position.col === col && p.position.row === row
     )
     
-    if (existingPrediction && color !== 'green') {
+    if (existingPrediction) {
       const matched = existingPrediction.color === color
       setStats(prev => ({
         ...prev,
@@ -248,6 +256,7 @@ function RouletteMode({
           const top = newSpins[topIdx]
           const left = newSpins[leftIdx]
           
+          // Both must have the same color (red or black) for prediction
           if (top && left && top.color !== 'green' && left.color !== 'green') {
             if (top.color === left.color) {
               const newPredId = predCount + 1 + (r - row - 1)
@@ -274,33 +283,44 @@ function RouletteMode({
     
     haptic('light')
     setStatus('added')
-  }, [spins, predictions, predCount, haptic])
+  }, [spins, predictions, predCount, lastColor, haptic])
 
   const deleteLast = useCallback(() => {
     if (spins.length === 0) return
-    
+
     const idx = spins.length - 1
     const col = Math.floor(idx / 10)
     const row = idx % 10
-    
+
     // Remove prediction for this position
     const predForPosition = predictions.find(
       p => p.position.col === col && p.position.row === row
     )
-    
+
     if (predForPosition) {
       setPredictions(prev => prev.filter(p => p.id !== predForPosition.id))
       setPredictionLogs(prev => prev.filter(log => log.id !== predForPosition.id))
     }
-    
+
     // Also remove any pending predictions that were generated after this spin
     setPredictions(prev => prev.filter(p => p.position.col < col || (p.position.col === col && p.position.row < row)))
     setPredictionLogs(prev => prev.filter(log => {
       const pred = predictions.find(p => p.id === log.id)
       return pred ? (pred.position.col < col || (pred.position.col === col && pred.position.row < row)) : true
     }))
-    
-    setSpins(prev => prev.slice(0, -1))
+
+    // Remove last spin
+    const newSpins = spins.slice(0, -1)
+    setSpins(newSpins)
+
+    // Restore lastColor from remaining spins (find last non-green color)
+    const lastNonGreenSpin = [...newSpins].reverse().find(s => s.color !== 'green')
+    if (lastNonGreenSpin) {
+      setLastColor(lastNonGreenSpin.color)
+    } else {
+      setLastColor('black')
+    }
+
     haptic('medium')
     setStatus('deleted')
   }, [spins, predictions, haptic])
